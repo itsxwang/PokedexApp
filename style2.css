@@ -1,0 +1,122 @@
+/* Right Panel Styles */
+.grid-panel {
+    background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+    border-radius: 0px 25px 25px 0px;
+    padding: 25px;
+    width: 420px;
+    box-shadow: 
+      20px 20px 60px #1a1a1a,
+      -20px -20px 60px #2d2d2d;
+    position: relative;
+    top: 112px;
+    right: 30px;
+  }
+  
+  .search-container {
+    margin-bottom: 25px;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 15px;
+    border: none;
+    background: #121212;
+    color: #fff;
+    font-size: 16px;
+    box-shadow: 
+      inset 5px 5px 10px #0a0a0a,
+      inset -5px -5px 10px #1a1a1a;
+    transition: all 0.3s ease;
+  }
+  
+  .search-input:focus {
+    outline: none;
+    box-shadow: 
+      inset 8px 8px 16px #0a0a0a,
+      inset -8px -8px 16px #1a1a1a;
+  }
+  
+  .search-input::placeholder {
+    color: #666;
+  }
+  
+  .pokemon-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+  }
+  
+  .grid-item {
+    background: #43B047;
+    border-radius: 15px;
+    aspect-ratio: 1;
+    border: 4px solid #2a722c;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+      0 4px 8px rgba(0, 0, 0, 0.2),
+      inset 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+      0 8px 16px rgba(0, 0, 0, 0.3),
+      inset 0 0 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Container styles */
+  .pokedex-container {
+    display: flex;
+    gap: 30px;
+    padding: 30px;
+    min-height: 100vh;
+    background: #121212;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .pokedex-container {
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+  
+    .gameboy-panel,
+    .grid-panel {
+      width: 100%;
+      max-width: 420px;
+    }
+  
+    .pokemon-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /* Add some base styles */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: #121212;
+    color: #fff;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+
+#searchIcon {
+    position: absolute;
+    right: 20px;
+    top: 11%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 20px;
+    width: 32px;
+    height: 32px;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Pokedex Interface</title>
+    <link rel="shortcut icon" href="pokeball.webp" type="image/x-icon">
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div class="pokedex-container">
+        <!-- Left Panel - Gameboy Display -->
+        <div class="gameboy-panel">
+            <div class="screen-container">
+                <div class="screen">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="Pokemon" class="pokemon-sprite" />
+                </div>
+                <div class="screen-bottom">
+                    <div class="light"></div>
+                </div>
+            </div>
+            <div class="controls">
+                <div class="d-pad">
+                    <button class="d-btn up"></button>
+                    <button class="d-btn right"></button>
+                    <button class="d-btn down"></button>
+                    <button class="d-btn left"></button>
+                    <div class="d-center"></div>
+                </div>
+                <div class="action-buttons">
+                    <button class="action-btn a-btn">A</button>
+                    <button class="action-btn b-btn">B</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel - Pokemon Grid -->
+        <div class="grid-panel">
+            <div class="search-container">
+                <input type="text" placeholder="Search Pokemon..." class="search-input">
+                <img src="searchIcon.png" alt="Search Icon" id="searchIcon">
+            </div>
+            <div class="pokemon-grid">
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+                <div class="grid-item"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
