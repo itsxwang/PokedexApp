@@ -1,49 +1,27 @@
 /* Right Panel Styles */
+
 .grid-panel {
     background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
-    border-radius: 0px 25px 25px 0px;
-    padding: 25px;
-    width: 420px;
+    /* border-radius: 25px; */
+    padding: 20px;
+    width: 354px;
     box-shadow: 
       20px 20px 60px #1a1a1a,
       -20px -20px 60px #2d2d2d;
     position: relative;
-    top: 112px;
-    right: 30px;
+    /* top: 131px; */
+    /* right: 30px; */
   }
-  
   .search-container {
     margin-bottom: 25px;
   }
   
-  .search-input {
-    width: 100%;
-    padding: 15px 20px;
-    border-radius: 15px;
-    border: none;
-    background: #121212;
-    color: #fff;
-    font-size: 16px;
-    box-shadow: 
-      inset 5px 5px 10px #0a0a0a,
-      inset -5px -5px 10px #1a1a1a;
-    transition: all 0.3s ease;
-  }
-  
-  .search-input:focus {
-    outline: none;
-    box-shadow: 
-      inset 8px 8px 16px #0a0a0a,
-      inset -8px -8px 16px #1a1a1a;
-  }
-  
-  .search-input::placeholder {
-    color: #666;
-  }
+ 
+
   
   .pokemon-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 15px;
   }
   
@@ -69,7 +47,7 @@
   /* Container styles */
   .pokedex-container {
     display: flex;
-    gap: 30px;
+    /* gap: 30px; */
     padding: 30px;
     min-height: 100vh;
     background: #121212;
@@ -89,10 +67,6 @@
     .grid-panel {
       width: 100%;
       max-width: 420px;
-    }
-  
-    .pokemon-grid {
-      grid-template-columns: repeat(3, 1fr);
     }
   }
   
