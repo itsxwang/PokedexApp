@@ -1,5 +1,4 @@
 const sprite = document.querySelector('.pokemon-sprite');
-
 async function getPokemon () {
     try {
         

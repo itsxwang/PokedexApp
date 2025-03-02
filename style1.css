@@ -1,9 +1,8 @@
 /* Left Panel Styles */
-
 .gameboy-panel {
   background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
-  padding: 25px;
-  /* width: 320px; */
+  padding: 25px 25px 25px; /* Reduced bottom padding */
+  width: 390px; /* Match the width of grid-panel */
   height: 530px;
   box-shadow:
     20px 20px 60px #1a1a1a,
@@ -15,11 +14,13 @@
   background: #121212;
   border-radius: 20px;
   padding: 20px;
-  margin-bottom: 25px;
+  margin-bottom: 15px; /* Reduced margin */
   box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  width: 100%;
 }
 
 .screen {
+  width: 100%;
   background: #43B047;
   border-radius: 15px;
   height: 220px;
@@ -61,206 +62,196 @@
 }
 
 @keyframes pulse {
-  0% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.5;
-  }
-
-  100% {
-    opacity: 1;
-  }
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
 }
-
-
-
 
 .action-buttons {
   display: flex;
-  gap: 17px;
-  margin: 12px 0 0 0;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  margin: 0;
   position: relative;
-
-  }
+  margin-top: 5px; /* Small top margin */
+}
 
 .action-btn {
-  height: 45px;
-  border-radius: 10%;
-  background: linear-gradient(145deg, #121212, #1a1a1a);
+  height: 40px; /* Slightly reduced height */
+  width: 60px; /* Fixed width for A and B buttons */
+  border-radius: 10px;
   border: none;
   color: #fff;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
   box-shadow:
     5px 5px 15px #0a0a0a,
     -5px -5px 15px #262626,
     inset 0 0 5px rgba(255, 255, 255, 0.1);
-  transition: all 0.2s ease;
 }
 
+/* Unique styling for A button */
+.a-btn {
+  background: linear-gradient(145deg, #43B047, #2a722c);
+  box-shadow:
+    5px 5px 15px #0a0a0a,
+    -5px -5px 15px #262626,
+    inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
 
+/* Unique styling for B button */
+.b-btn {
+  background: linear-gradient(145deg, #ff3e3e, #cc2424);
+  box-shadow:
+    5px 5px 15px #0a0a0a,
+    -5px -5px 15px #262626,
+    inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced Battle button */
+.battle {
+  width: 120px;
+  height: 40px;
+  border-radius: 100px;
+  background: linear-gradient(145deg, #ffd700, #ffa500);
+  color: #333;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow:
+    5px 5px 15px #0a0a0a,
+    -5px -5px 15px #262626,
+    inset 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-top: -5px;
+}
+
+/* Hover effects */
 .action-btn:hover {
   transform: translateY(-2px);
-  box-shadow:
-    8px 8px 20px #0a0a0a,
-    -8px -8px 20px #262626,
-    inset 0 0 8px rgba(255, 255, 255, 0.15);
+  filter: brightness(1.2);
 }
 
+.battle:hover {
+  transform: translateY(-2px) scale(1.05);
+  filter: brightness(1.2);
+}
+
+/* Active states */
 .action-btn:active {
   transform: translateY(1px);
+  filter: brightness(0.95);
   box-shadow:
     3px 3px 10px #0a0a0a,
     -3px -3px 10px #262626,
-    inset 0 0 5px rgba(0, 0, 0, 0.2);
+    inset 0 0 8px rgba(0, 0, 0, 0.4);
 }
 
-.battle {
-  margin-left: 31%;
-  position: relative;
-  top: 12px;
-  min-width: 110px;
-  border-radius: 100px;
-
+.battle:active {
+  transform: translateY(1px) scale(0.98);
 }
 
-@media (max-width: 768px) {
-  .action-buttons {
-    margin: 32px 0 0 35px;
-    bottom: 7px;
-    left: 5px;
-    gap: 20px;
-  }
+/* Add glow effects */
+.a-btn::after,
+.b-btn::after,
+.battle::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  transition: all 0.3s ease;
+  opacity: 0;
+}
 
-  .battle {
-
-    margin-left: 35%;
-    position: relative;
-    top: 5px;
-    min-width: 110px;
-
-  }
-
- @media (max-width: 441px) {
-  .action-buttons {
-    margin: 20px 0 0 1.2em;
-    bottom: 7px;
-    /* left: 1px; */
-    gap: 20px;
-  }
- }
-  @media (max-width: 395px) {
-    .action-buttons {
-      margin: 2em 0 1em 0px;
-      top: 1px;
-      gap: 20px;
-    }
-
-    .battle {
-      margin-left: 30.9%;
-    }
-  }
+.action-btn:hover::after {
+  opacity: 1;
 }
 
 .roll_btn {
-    width: 60px;
-    height: 60px;
-    background: #ffffff;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 18px;
-    cursor: pointer;
-    margin: -7px auto 0 auto;
-    position: relative;
-    color: #333;
-    border: 2px solid #333;
-    box-shadow: 
-        0 0 10px rgba(0, 0, 0, 0.2),
-        inset 0 0 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+  width: 60px;
+  height: 60px;
+  background: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 0; /* Remove margin and let gap handle spacing */
+  position: relative;
+  color: #333;
+  border: 2px solid #333;
+  box-shadow: 
+      0 0 10px rgba(0, 0, 0, 0.2),
+      inset 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin-bottom: 0; /* Removed bottom margin */
+  transform-origin: center;
 }
 
-/* Dice dots using pseudo-elements */
 .roll_btn::before {
-    content: '';
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: #333;
-    border-radius: 50%;
-    top: 10px;
-    left: 10px;
-    box-shadow: 
-        30px 0 0 #333,  /* right dot */
-        0 30px 0 #333,  /* bottom left dot */
-        30px 30px 0 #333,  /* bottom right dot */
-        15px 15px 0 #333;  /* center dot */
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #333;
+  border-radius: 50%;
+  top: 10px;
+  left: 10px;
+  box-shadow: 
+      30px 30px 0 #333,
+      15px 15px 0 #333;
 }
 
-/* Hover effect */
 .roll_btn:hover {
-    transform: scale(1.2);
-    box-shadow: 
-        0 5px 15px rgba(0, 0, 0, 0.3),
-        inset 0 0 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.2);
+  box-shadow: 
+      0 5px 15px rgba(0, 0, 0, 0.3),
+      inset 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Click effect */
 .roll_btn:active {
-    transform: translateY(2px);
-    transform: scale(0.7);  
+  transform: translateY(2px);
+  transform: scale(0.7);  
 }
 
-/* Rolling animation */
 @keyframes rolling {
-    0% {
-        transform: rotate(0deg) scale(1);
-    }
-    25% {
-        transform: rotate(90deg) scale(0.7);
-    }
-    50% {
-        transform: rotate(180deg) scale(1.5);
-    }
-    75% {
-        transform: rotate(270deg) scale(0.7);
-    }
-    100% {
-        transform: rotate(360deg) scale(1);
-    }
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(90deg) scale(0.7); }
+  50% { transform: rotate(180deg) scale(1.5); }
+  75% { transform: rotate(270deg) scale(0.7); }
+  100% { transform: rotate(360deg) scale(1); }
 }
 
-/* Add this class via JavaScript when rolling */
 .rolling {
-    animation: rolling 0.8s infinite ease-in-out;
-    pointer-events: none; /* Prevent clicks during animation */
-    background: #f0f0f0;
+  animation: rolling 0.8s infinite ease-in-out;
+  pointer-events: none;
+  background: #f0f0f0;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .roll_btn {
-        width: 50px;
-        height: 50px;
-        font-size: 16px;
-    }
-    
-    .roll_btn::before {
-        width: 8px;
-        height: 8px;
-        top: 8px;
-        left: 8px;
-        box-shadow: 
-            25px 0 0 #333,
-            0 25px 0 #333,
-            25px 25px 0 #333,
-            12px 12px 0 #333;
-    }
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  gap: 10px; /* Reduced gap */
+  margin-top: -10px; /* Negative margin to move up */
 }
 
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 15px; /* Reduced gap */
+}
