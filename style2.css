@@ -1,17 +1,16 @@
-/* Add this at the top of your grid-panel styles */
-
+/* Right Panel Styles */
 .search-container {
     width: 100%;
-    margin-bottom: 1.5rem;
-    position: relative;
+    margin-bottom: 0.35rem;
+    position: relative; 
     display: flex;
     align-items: center;
     background: linear-gradient(90deg, #1a1a1a, #2d2d2d);
     padding: 2px; /* Creates space for the gradient border */
     border-radius: 100px;
     transition: all 0.3s ease;
-    position: sticky;
-    top: 1.5rem;
+
+    /* top: 1.5rem; */
     z-index: 10;
 }
 
@@ -79,7 +78,6 @@
     transform: scale(0.95);
 }
 
-/* Remove the gradientBorder animation and add focus styling to container */
 .search-container:focus-within {
     background: linear-gradient(
         90deg,
@@ -113,19 +111,29 @@
     -20px -20px 60px #2d2d2d;
   height: 530px;
   border-radius: 20px;
-  overflow-y: scroll; /* Prevent overflow */
-  overflow-x: hidden;
-  scrollbar-width: none; /* Set scrollbar width */
-  position: relative; /* Add this */
+  overflow: hidden; /* Change from scroll to hidden instead we add scrolling to grid-content */
+  position: relative; 
+}
+
+.grid-content {
+    height: calc(100% - 30px); /* Adjust based on search container height */
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none; 
+    /* border-radius: 30px 30px 0px 0px; */
+}
+
+.grid-content::-webkit-scrollbar {
+    display: none;
 }
 
 .pokemon-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Adjust grid item size */
-  gap: 10px; /* Reduce gap to fit more items */
+  gap: 10px; 
   padding: 10px;
-  width: 100%; /* Ensure grid takes full width */
-  box-sizing: border-box; /* Include padding in width calculation */
+  width: 100%; 
+  box-sizing: border-box; 
 }
 
 .grid-item {
@@ -147,8 +155,8 @@
 }
 
 .grid-header {
-  position: sticky;
-  top: -20px;
+  position: relative; 
+  top: -5px;
   z-index: 10;
 }
 
