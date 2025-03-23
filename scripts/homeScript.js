@@ -3,11 +3,17 @@
 const sprite = document.querySelector(".pokemon-sprite");
 const rollBtn = document.querySelector(".js-roll-btn");
 const pokemonGrid = document.querySelector(".pokemon-grid");
+const gridContent = document.querySelector(".grid-content");
+
+const searchInput = document.getElementById("searchInput");
+const searchIcon = document.querySelector(".search-btn");
 
 // All script variables
-const userPokemonStorage = JSON.parse(localStorage.getItem("pokemons")) || [
-  // Object will be gonna be of this type
-  /* {
+const userPokemonStorage =
+  JSON.parse(localStorage.getItem("pokemons")) ||
+  [
+    // Object will be gonna be of this type
+    /* {
     name: "Bulbasaur",
     type: "grass",
     sprite:
@@ -21,7 +27,7 @@ const userPokemonStorage = JSON.parse(localStorage.getItem("pokemons")) || [
       speed: 45,
     },
   }, */
-];
+  ];
 
 // Get Pokemon Function
 async function getPokemon() {
@@ -48,11 +54,13 @@ async function getPokemon() {
   }
 }
 
+// ----------------- Display Error -----------------
 // for error , (on fetching pokemon/networks error)
 async function displayError(error) {
   // ... will make for this
 }
 
+// ----------------- Store Pokemon -----------------
 // this function store pokemons after fetching them
 async function storePokemon(pokemonData) {
   const pokemon = {
@@ -73,74 +81,135 @@ async function storePokemon(pokemonData) {
   localStorage.setItem("pokemons", JSON.stringify(userPokemonStorage));
 }
 
+
+//  ----------------- Display Pokemon -----------------
 // display pokemon on screen and storage after fetch and store
-async function displayPokemon(image) {
+async function displayPokemon(
+  image,
+  fromSearch = null
+) {
+  let pokemonGridData = "";
+  let pokemonsToRender = userPokemonStorage; // default
+
+  if (fromSearch === null) {
+
+
   // display on screen
   sprite.setAttribute("src", image);
   // stop rolling the dice
   rollBtn.classList.remove("rolling");
 
-  // add rolled pokemon on storage
-  let pokemonGridData = "";
-  userPokemonStorage.forEach((element) => {
+
+  } else {
+
+  // this is for search
+    pokemonsToRender = fromSearch;
+
+  }
+
+  pokemonsToRender.forEach((element) => {
     pokemonGridData += `
                             <div class="grid-item">
                         <div class="pokemon-image-container">
-                            <img src="${element.sprite}" alt="Pokemon" class="pokemon-image">
+                            <img src="${
+                              element.sprite
+                            }" alt="Pokemon" class="pokemon-image">
                         </div>
                         
                         <div class="pokemon-info">
                             <div class="pokemon-identity">
                                 <div class="stat-group">
                                     <p class="stat-label">Name:</p>
-                                    <p class="stat-value">${element.name[0].toUpperCase() + element.name.slice(1)}</p>
+                                    <p class="stat-value">${
+                                      element.name[0].toUpperCase() +
+                                      element.name.slice(1)
+                                    }</p>
                                 </div>
                                 <div class="stat-group">
                                     <p class="stat-label">Type:</p>
-                                    <p class="stat-value">${element.type[0].toUpperCase() + element.type.slice(1)}</p>
+                                    <p class="stat-value">${
+                                      element.type[0].toUpperCase() +
+                                      element.type.slice(1)
+                                    }</p>
                                 </div>
                             </div>
 
                             <div class="pokemon-stats">
                                 <div class="stat-row">
                                     <span class="stat-label">HP:</span>
-                                    <span class="stat-value">${element.stats.hp}</span>
+                                    <span class="stat-value">${
+                                      element.stats.hp
+                                    }</span>
                                 </div>
                                 <div class="stat-row">
                                     <span class="stat-label">Attack:</span>
-                                    <span class="stat-value">${element.stats.attack}</span>
+                                    <span class="stat-value">${
+                                      element.stats.attack
+                                    }</span>
                                 </div>
                                 <div class="stat-row">
                                     <span class="stat-label">Defense:</span>
-                                    <span class="stat-value">${element.stats.defense}</span>
+                                    <span class="stat-value">${
+                                      element.stats.defense
+                                    }</span>
                                 </div>
                                 <div class="stat-row">
                                     <span class="stat-label">Speed:</span>
-                                    <span class="stat-value">${element.stats.speed}</span>
+                                    <span class="stat-value">${
+                                      element.stats.speed
+                                    }</span>
                                 </div>
                                 <div class="stat-row">
                                     <span class="stat-label">Sp. Atk:</span>
-                                    <span class="stat-value">${element.stats.specialAttack}</span>
+                                    <span class="stat-value">${
+                                      element.stats.specialAttack
+                                    }</span>
                                 </div>
                                 <div class="stat-row">
                                     <span class="stat-label">Sp. Def:</span>
-                                    <span class="stat-value">${element.stats.specialDefense}</span>
+                                    <span class="stat-value">${
+                                      element.stats.specialDefense
+                                    }</span>
                                 </div>
                             </div>
                         </div>
                     </div>
         `;
   });
+
   pokemonGrid.innerHTML = pokemonGridData;
 }
 
-// onClickRoll, logic
-document.querySelector(".js-roll-btn").addEventListener("click", getPokemon);
-document.querySelector("body").addEventListener("keydown", (e) => {
-  if (e.key === "r") {
-    getPokemon();
+// Search button functionality
+
+function searchClicked() {
+  const searchValue = searchInput.value.toLowerCase();
+  searchInput.value = "";
+
+  let searchResult = userPokemonStorage.filter((element) => {
+    return element.name.includes(searchValue);
+  });
+
+  if (searchResult.length === 0) {
+    searchResult = "No Pokemon Found!";
+    pokemonGrid.innerHTML = `<p>${searchResult}</p>`;
+    // pokemonGrid.style.setProperty("justify-content", "center");
+    // pokemonGrid.style.setProperty("place-content", "center");   //!will aplly these to the parent  (grid-content)
+    return;
+  }
+  console.log(searchResult);
+  displayPokemon(null, searchResult);
+}
+
+searchIcon.addEventListener("click", searchClicked);
+searchInput.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") {
+    searchClicked();
   }
 });
+
+// onClickRoll, logic
+document.querySelector(".js-roll-btn").addEventListener("click", getPokemon);
 
 // on load, logic
 window.addEventListener("load", () => {
@@ -150,4 +219,3 @@ window.addEventListener("load", () => {
     displayPokemon(userPokemonStorage[userPokemonStorage.length - 1].sprite);
   }
 });
-
