@@ -1,45 +1,106 @@
+/*========================================
+  POKEMON APPLICATION - GAMEBOY PANEL STYLES
+  
+  Table of Contents:
+  1. Variables & Settings
+  2. Gameboy Panel Container
+  3. Screen Components
+  4. Control Elements
+  5. Button Styling
+  6. Animation Effects
+  7. Media Queries
+========================================*/
 
-/* Left Panel Styles */
-.gameboy-panel {
-  background: linear-gradient(165deg, #1a1a1a, #2d2d2d);
-  padding: 25px 25px 25px; 
-  width: 390px; 
-  /* height: 70vh; */
-  box-shadow:
-    20px 20px 60px rgba(26, 26, 26, 0.8),
-    -20px -20px 60px rgba(45, 45, 45, 0.5),
-    inset 0 0 20px rgba(67, 176, 71, 0.1);
-  border-radius: clamp(15px, 3vw, 25px);
-  overflow: hidden;
-  position: relative;
-  top: clamp(0px, 0.2vh, 20px);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(67, 176, 71, 0.1);
-  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+/*----------------------------------------
+  1. VARIABLES & SETTINGS
+----------------------------------------*/
+:root {
+  /* Color palette */
+  --gb-dark-100: #2d2d2d;
+  --gb-dark-200: #1a1a1a;
+  --gb-dark-300: #121212;
+  
+  --gb-green-100: #5fcf63;
+  --gb-green-200: #4dc351;
+  --gb-green-300: #43B047;
+  --gb-green-400: #3a9a3e;
+  --gb-green-500: #2a722c;
+  
+  --gb-red: #FF3E3E;
+  --gb-gold: #FFD700;
+  --gb-gold-dark: #ffb700;
+  
+  /* Shadows */
+  --shadow-inset: inset 0 0 20px rgba(67, 176, 71, 0.1);
+  --shadow-outer: 20px 20px 60px rgba(26, 26, 26, 0.8),
+                 -20px -20px 60px rgba(45, 45, 45, 0.5);
+  --shadow-hover: 25px 25px 75px rgba(26, 26, 26, 0.9),
+                 -25px -25px 75px rgba(45, 45, 45, 0.6),
+                 inset 0 0 40px rgba(67, 176, 71, 0.2);
+                 
+  /* Border radius */
+  --radius-small: 15px;
+  --radius-medium: 20px;
+  --radius-large: 25px;
+  
+  /* Transitions */
+  --transition-fast: all 0.3s ease;
+  --transition-medium: all 0.5s ease;
+  --transition-fancy: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+/*----------------------------------------
+  2. GAMEBOY PANEL CONTAINER
+----------------------------------------*/
+.gameboy-panel {
+  /* Base styling */
+  background: linear-gradient(165deg, var(--gb-dark-200), var(--gb-dark-100));
+  padding: clamp(20px, 5%, 25px); 
+  width: min(95%, 390px); 
+  border-radius: clamp(15px, 3vw, var(--radius-large));
+  
+  /* 3D effects */
+  box-shadow: var(--shadow-outer), var(--shadow-inset);
+  border: 1px solid rgba(67, 176, 71, 0.1);
+  backdrop-filter: blur(10px);
+  
+  /* Positioning */
+  position: relative;
+  top: clamp(0px, 0.2vh, 20px);
+  overflow: hidden;
+  
+  /* Animation */
+  transition: var(--transition-fancy);
+}
+
+/* Hover state enhancement */
 .gameboy-panel:hover {
   transform: translateY(-5px);
-  box-shadow:
-    25px 25px 75px rgba(26, 26, 26, 0.9),
-    -25px -25px 75px rgba(45, 45, 45, 0.6),
-    inset 0 0 40px rgba(67, 176, 71, 0.2);
+  box-shadow: var(--shadow-hover);
   border-color: rgba(67, 176, 71, 0.2);
 }
 
+/*----------------------------------------
+  3. SCREEN COMPONENTS
+----------------------------------------*/
 .screen-container {
-  background: #121212;
-  border-radius: 20px;
+  /* Base styling */
+  background: var(--gb-dark-300);
+  border-radius: var(--radius-medium);
   padding: 20px;
   margin-bottom: 15px;
-  box-shadow: 
-    inset 0 0 15px rgba(0, 0, 0, 0.5),
-    0 4px 15px rgba(0, 0, 0, 0.2);
   width: 100%;
+  
+  /* 3D effects */
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5),
+              0 4px 15px rgba(0, 0, 0, 0.2);
+              
+  /* Positioning */          
   position: relative;
   overflow: hidden;
 }
 
+/* Screen shine effect */
 .screen-container::after {
   content: '';
   position: absolute;
@@ -66,22 +127,29 @@
 }
 
 .screen {
+  /* Base styling */
   width: 100%;
-  background: linear-gradient(145deg, #43B047, #2a722c);
-  border-radius: 15px;
+  background: linear-gradient(145deg, var(--gb-green-400), var(--gb-green-300));
+  border-radius: var(--radius-small);
   height: min(40vh, 220px);
+  border: 8px solid var(--gb-green-500);
+  
+  /* Layout */
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 8px solid #2a722c;
-  box-shadow: 
-    inset 0 0 20px rgba(0, 0, 0, 0.2),
-    0 0 15px rgba(67, 176, 71, 0.2);
-  transition: all 0.3s ease;
+  
+  /* 3D effects */
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2),
+              0 0 15px rgba(67, 176, 71, 0.2);
+              
+  /* Positioning */
   position: relative;
   overflow: hidden;
+  transition: var(--transition-fast);
 }
 
+/* Screen glare effect */
 .screen::after {
   content: '';
   position: absolute;
@@ -103,7 +171,7 @@
   width: min(180px, 90%);
   height: min(180px, 90%);
   image-rendering: pixelated;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: var(--transition-fancy);
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
 }
 
@@ -122,67 +190,150 @@
 .light {
   width: 12px;
   height: 12px;
-  background-color: #FF3E3E;
+  background-color: var(--gb-red);
   border-radius: 50%;
   margin-left: 15px;
   box-shadow:
-    0 0 10px #FF3E3E,
+    0 0 10px var(--gb-red),
     0 0 20px rgba(255, 62, 62, 0.5),
     inset 0 0 4px rgba(255, 255, 255, 0.5);
   animation: pulse 2s infinite;
 }
 
-@keyframes pulse {
-  0% { 
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% { 
-    opacity: 0.5;
-    transform: scale(0.85);
-  }
-  100% { 
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.action-buttons {
+/*----------------------------------------
+  4. CONTROL ELEMENTS
+----------------------------------------*/
+.controls {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(1rem, 4vw, 1.5rem);
+  gap: clamp(1rem, 3vw, 1.5rem);
+  background: linear-gradient(145deg, rgba(26, 26, 26, 0.8), rgba(45, 45, 45, 0.8));
+  border-radius: var(--radius-small);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 30px;
-  width: 100%;
-  margin: 0;
-  position: relative;
-  margin-top: 5px; /* Small top margin */
+  gap: clamp(1rem, 3vw, 1.5rem);
 }
 
-.action-btn {
-  height: 40px; 
-  width: 60px; 
-  border-radius: 10px;
-  border: none;
-  color: #fff;
-  font-size: 16px;
-  font-weight: bold;
+/*----------------------------------------
+  5. BUTTON STYLING
+----------------------------------------*/
+.roll_btn {
+  width: clamp(50px, 10vw, 80px);
+  height: clamp(50px, 10vw, 80px);
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
   position: relative;
+  border: 4px solid #333;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.2);
+  transition: var(--transition-fancy);
   overflow: hidden;
-  box-shadow:
-    5px 5px 15px #0a0a0a,
-    -5px -5px 15px #262626,
-    inset 0 0 5px rgba(255, 255, 255, 0.1);
 }
 
+/* Pokeball top half (red) */
+.roll_btn::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(145deg, #ff1f1f, #cc0000);
+  top: 0;
+  left: 0;
+  border-radius: 36px 36px 0 0;
+  z-index: 1;
+}
 
+/* Pokeball bottom half (white) */
+.roll_btn::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  bottom: 0;
+  left: 0;
+  border-radius: 0 0 36px 36px;
+  z-index: 1;
+}
+
+/* Pokeball middle divider */
+.roll_btn .middle-line {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: #333;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+/* Pokeball center button */
+.roll_btn span {
+  position: relative;
+  z-index: 3;
+  background: #fff;
+  width: clamp(16px, 3vw, 24px);
+  height: clamp(16px, 3vw, 24px);
+  border-radius: 50%;
+  border: 3px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: var(--transition-fast);
+}
+
+/* Inner circle of center button */
+.roll_btn span::before {
+  content: '';
+  width: 60%;
+  height: 60%;
+  background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
+  border-radius: 50%;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover states */
+.roll_btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow:
+    0 8px 20px rgba(204, 0, 0, 0.4),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.roll_btn:hover span {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.roll_btn:active {
+  transform: translateY(2px) scale(0.95);
+  box-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.2),
+    inset 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Battle button styling */
 .battle {
-  width: 140px;
-  height: 45px;
-  background: linear-gradient(145deg, #ffd700, #ffb700);
+  width: clamp(110px, 15vw, 140px);
+  height: clamp(35px, 6vw, 45px);
+  background: linear-gradient(145deg, var(--gb-gold), var(--gb-gold-dark));
   border-radius: 25px;
-  color: #1a1a1a;
-  font-size: 16px;
+  color: var(--gb-dark-200);
+  font-size: clamp(14px, 2vw, 16px);
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: bold;
@@ -193,15 +344,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: var(--transition-fancy);
   text-decoration: none;
 }
 
 .battle::before {
   content: '⚡';
-  font-size: 20px;
+  font-size: clamp(16px, 2.5vw, 20px);
   margin-right: 8px;
-  transition: all 0.3s ease;
+  transition: var(--transition-fast);
 }
 
 .battle::after {
@@ -212,9 +363,10 @@
   border-radius: 23px;
   z-index: -1;
   opacity: 0;
-  transition: all 0.3s ease;
+  transition: var(--transition-fast);
 }
 
+/* Hover states */
 .battle:hover {
   transform: translateY(-3px) scale(1.05);
   color: #000;
@@ -237,134 +389,25 @@
     0 2px 10px rgba(255, 183, 0, 0.2);
 }
 
-/* Hover effects */
-.action-btn:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.2);
+/*----------------------------------------
+  6. ANIMATION EFFECTS
+----------------------------------------*/
+@keyframes pulse {
+  0% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-/* Add glow effects */
-.a-btn::after,
-.b-btn::after,
-.battle::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: rgba(255, 255, 255, 0.1);
-  transform: rotate(45deg);
-  transition: all 0.3s ease;
-  opacity: 0;
-}
-
-.action-btn:hover::after {
-  opacity: 1;
-}
-
-.roll_btn {
-  width: 80px;
-  height: 80px;
-  background: #fff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  position: relative;
-  border: 4px solid #333;
-  box-shadow: 
-    0 4px 15px rgba(0, 0, 0, 0.3),
-    inset 0 -4px 8px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  overflow: hidden;
-}
-
-/* Top red half */
-.roll_btn::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 50%;
-  background: linear-gradient(145deg, #ff1f1f, #cc0000);
-  top: 0;
-  left: 0;
-  border-radius: 36px 36px 0 0;
-  z-index: 1;
-}
-
-/* Bottom white half */
-.roll_btn::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 50%;
-  background: linear-gradient(145deg, #ffffff, #f0f0f0);
-  bottom: 0;
-  left: 0;
-  border-radius: 0 0 36px 36px;
-  z-index: 1;
-}
-
-/* Middle black line */
-.roll_btn .middle-line {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 4px;
-  background: #333;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-}
-
-/* Center button */
-.roll_btn span {
-  position: relative;
-  z-index: 3;
-  background: #fff;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 3px solid #333;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-}
-
-/* Inner circle of center button */
-.roll_btn span::before {
-  content: '';
-  width: 12px;
-  height: 12px;
-  background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
-  border-radius: 50%;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.roll_btn:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow:
-    0 8px 20px rgba(204, 0, 0, 0.4),
-    inset 0 -4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.roll_btn:hover span {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-}
-
-.roll_btn:active {
-  transform: translateY(2px) scale(0.95);
-  box-shadow:
-    0 2px 10px rgba(0, 0, 0, 0.2),
-    inset 0 2px 3px rgba(0, 0, 0, 0.2);
-}
-
-/* Rolling animation */
+/* Rolling animation for Pokeball */
 @keyframes rolling {
   0% {
     transform: rotate(0deg) scale(1);
@@ -395,16 +438,6 @@
   }
 }
 
-.rolling {
-  animation: rolling 1s cubic-bezier(0.36, 0, 0.66, -0.56) infinite,
-             shake 0.5s ease-in-out infinite;
-  pointer-events: none;
-}
-
-.rolling span {
-  animation: glowPulse 0.4s ease-in-out infinite alternate;
-}
-
 @keyframes glowPulse {
   0% {
     background: #fff;
@@ -418,31 +451,102 @@
   }
 }
 
-.controls {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1.5rem;
-  gap: 1.5rem;
-  background: linear-gradient(145deg, rgba(26, 26, 26, 0.8), rgba(45, 45, 45, 0.8));
-  border-radius: 15px;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+/* Animation classes */
+.rolling {
+  animation: rolling 1s cubic-bezier(0.36, 0, 0.66, -0.56) infinite,
+             shake 0.5s ease-in-out infinite;
+  pointer-events: none;
 }
 
-.button-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
+.rolling span {
+  animation: glowPulse 0.4s ease-in-out infinite alternate;
 }
 
-/* ---Some media queries */
+/*----------------------------------------
+  7. MEDIA QUERIES
+----------------------------------------*/
+/* Large desktop and TV */
+@media screen and (min-width: 1400px) {
+  .gameboy-panel {
+    padding: 25px;
+    width: 420px;
+  }
+  
+  .screen {
+    height: 240px;
+  }
+}
 
-/* Media queries */
+/* Medium desktop and landscape tablet */
+@media screen and (max-width: 1200px) {
+  .gameboy-panel {
+    width: min(95%, 380px);
+  }
+}
+
+/* Portrait tablet and small desktop */
+@media screen and (max-width: 992px) {
+  .gameboy-panel {
+    width: min(95%, 350px);
+  }
+  
+  .screen {
+    height: min(35vh, 200px);
+  }
+}
+
+/* Landscape phone and portrait tablet */
+@media screen and (max-width: 768px) {
+  .gameboy-panel {
+    width: min(95%, 320px);
+    padding: 15px;
+  }
+  
+  .screen {
+    height: min(30vh, 180px);
+    border-width: 6px;
+  }
+  
+  .controls {
+    padding: 1rem;
+    gap: 1rem;
+  }
+}
+
+/* Portrait phones */
+@media screen and (max-width: 576px) {
+  .gameboy-panel {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px;
+  }
+  
+  .screen {
+    height: min(25vh, 160px);
+    border-width: 5px;
+  }
+  
+  .screen-container {
+    padding: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .roll_btn {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .battle {
+    width: 110px;
+    height: 35px;
+    font-size: 14px;
+  }
+}
+
+/* Height-based media queries */
 @media screen and (max-height: 700px) {
   .gameboy-panel {
-    height: min(92vh, 480px);
-    padding: 20px;
+    padding: 15px;
   }
 
   .screen {
@@ -452,11 +556,10 @@
   .roll_btn {
     width: 60px;
     height: 60px;
-    font-size: 16px;
   }
 
   .battle {
-    width: 120px;
+    width: 110px;
     height: 40px;
     font-size: 14px;
   }
@@ -464,8 +567,7 @@
 
 @media screen and (max-height: 500px) {
   .gameboy-panel {
-    height: min(90vh, 420px);
-    padding: 15px;
+    padding: 12px;
   }
 
   .screen {
@@ -476,67 +578,16 @@
   .roll_btn {
     width: 50px;
     height: 50px;
-    font-size: 14px;
   }
 
   .battle {
-    width: 110px;
+    width: 100px;
     height: 35px;
     font-size: 13px;
   }
 
   .controls {
     padding: 10px;
-    gap: 15px;
+    gap: 10px;
   }
-}
-
-/* Add shine effect to buttons */
-.roll_btn::after,
-.action-btn::after,
-.battle::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.1) 45%,
-    rgba(255, 255, 255, 0.2) 50%,
-    rgba(255, 255, 255, 0.1) 55%,
-    transparent 100%
-  );
-  transform: rotate(45deg);
-  transition: all 0.5s ease;
-  opacity: 0;
-}
-
-.roll_btn:hover::after,
-.action-btn:hover::after,
-.battle:hover::after {
-  opacity: 1;
-  transform: rotate(45deg) translate(50%, 50%);
-}
-
-/* Enhanced hover effects */
-.roll_btn:hover,
-.action-btn:hover,
-.battle:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow:
-    0 8px 20px rgba(0, 0, 0, 0.3),
-    inset 0 2px 5px rgba(255, 255, 255, 0.8),
-    inset 0 -2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.roll_btn:active,
-.action-btn:active,
-.battle:active {
-  transform: translateY(2px) scale(0.95);
-  box-shadow:
-    0 2px 10px rgba(0, 0, 0, 0.2),
-    inset 0 2px 3px rgba(0, 0, 0, 0.2);
 }
