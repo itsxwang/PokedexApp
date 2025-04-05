@@ -11,30 +11,30 @@
 </head>
 
 <body>
-    <div class="pokedex-container">
+    <main class="pokedex-container">
+
         <!-- Left Panel - Gameboy Display -->
-        <div class="gameboy-panel">
+        <section class="gameboy-panel">
             <div class="screen-container">
-                <div class="screen">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt=""
+                <figure class="screen">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="Pokemon Sprite"
                         class="pokemon-sprite" />
-                </div>
+                </figure>
                 <div class="screen-bottom">
                     <div class="light"></div>
                 </div>
             </div>
+
             <div class="controls">
-                <div class="roll_btn js-roll-btn">
+                <button class="roll_btn js-roll-btn" aria-label="Roll for Pokemon">
                     <div class="middle-line"></div>
                     <span></span>
-                </div>
+                </button>
                 <div class="button-container">
-                    <a class="battle" href="./battlePage.html">
-                        Battle
-                    </a>
+                    <a class="battle" href="./battlePage.html">Battle</a>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Animated connecting elements -->
         <div class="connection-line"></div>
@@ -45,24 +45,25 @@
         <div class="energy-particle"></div>
 
         <!-- Right Panel - Pokemon Grid -->
-        <div class="grid-panel">
-            <div class="grid-header">
+        <section class="grid-panel">
+            <header class="grid-header">
                 <div class="search-container">
                     <input id="searchInput" type="text" class="search-input" placeholder="Search Pokemon...">
-                    <button class="search-btn">
-                        <img src="./Images/searchIcon.png" alt="Search" class="search-icon">
+                    <button class="search-btn" aria-label="Search">
+                        <img src="../Images/searchIcon.png" alt="Search Icon" class="search-icon">
                     </button>
                 </div>
-            </div>
+            </header>
+
             <div class="grid-content">
                 <div class="pokemon-grid">
                     <!-- Here Grid Items -->
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
-    <script src="./scripts/homeScript.js"></script>
+    <script src="../js/homeScript.js"></script>
 </body>
 
 </html>
