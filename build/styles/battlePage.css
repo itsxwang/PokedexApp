@@ -1,0 +1,49 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* just default but often override */
+    font-family: cursive;
+}
+
+body {
+    background: linear-gradient(to bottom right, #1d0f01 10%, #030303 27%, #1d0f02);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    height: 100vh;  
+}
+
+.closeIconContainer {
+    position: absolute;
+    top: 0rem;
+    right: 1rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    background: #0f0f0f;
+    border: 2px solid #8f5f2f;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 6px rgba(143, 95, 47, 0.6);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.closeIconContainer:hover {
+    box-shadow: 0 0 10px rgba(143, 95, 47, 0.9);
+    transform: scale(1.05);
+    
+}
+
+.closeIcon {
+    width: 1.6rem;
+    height: 1.6rem;
+    filter: brightness(90%) contrast(120%);
+    transition: transform 0.2s ease;
+}
+
+.closeIcon:hover {
+    
+}

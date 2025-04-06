@@ -3,35 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Battle Page</title>
+    <!-- Link to external CSS file -->
     <link rel="stylesheet" href="../styles/battlePage.css">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <aside class="closeIconContainer">
+        <img class="closeIcon"  src="../Images/cross.png" alt="">
+    </aside>
+
     <main class="battle-container">
+        <!-- Upper Section: Battle Arena -->
         <section class="upperSection">
             <div class="pokemonsBattleArena">
 
+                <!-- Pokemon 1 -->
                 <figure class="Pokemon1">
                     <img src="" alt="Pokemon1" />
                 </figure>
 
+                <!-- Battle Start Effect -->
                 <figure class="startBattleEffect">
                     <img src="../Images/fire.gif"></img>
                 </figure>
 
+                <!-- Pokemon 2 -->
                 <figure>
                     <img src="" alt="Pokemon2" />
                 </figure>
 
             </div>
-                <button class="battleStartBtn">Start</button>
+            <!-- Start Battle Button -->
+            <button class="battleStartBtn">Start</button>
         </section>
 
-         <section class="belowSection">
-                sec
-         </section>
+        <!-- Below Section: Pokemon Selection and VS Text -->
+        <section class="belowSection">
+            <!-- Right Pokemon Selection -->
+            <section class="chooseRightPokemon">
+            </section>
+            
+            <!-- VS Text -->
+            <div class="bottomMiddleText">
+                <span class="vstext styleV">V</span>
+                <span class="vstext styleS">S</span>
+            </div>
+            
+            <!-- Left Pokemon Selection -->
+            <section class="chooseLeftPokemon">
+            </section>
+        </section>
     </main>
 </body>
 </html>
