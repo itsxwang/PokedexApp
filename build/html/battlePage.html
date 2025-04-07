@@ -11,17 +11,18 @@
 </head>
 <body>
 
-    <aside class="closeIconContainer">
-        <img class="closeIcon"  src="../Images/cross.png" alt="">
-    </aside>
-
+   
+    
     <main class="battle-container">
         <!-- Upper Section: Battle Arena -->
         <section class="upperSection">
-            <div class="pokemonsBattleArena">
+
+            <a class="closeIconContainer" href="./homePage.html"><img class="closeIcon"  src="../Images/cross.png" alt=""></a>
+
+            <div class="battleArena">
 
                 <!-- Pokemon 1 -->
-                <figure class="Pokemon1">
+                <figure class="upperPokemons selectedPokemon1">
                     <img src="" alt="Pokemon1" />
                 </figure>
 
@@ -31,14 +32,17 @@
                 </figure>
 
                 <!-- Pokemon 2 -->
-                <figure>
+                <figure class="upperPokemons selectedPokemon2">
                     <img src="" alt="Pokemon2" />
                 </figure>
 
-            </div>
+        </div>
+            
             <!-- Start Battle Button -->
             <button class="battleStartBtn">Start</button>
         </section>
+        
+
 
         <!-- Below Section: Pokemon Selection and VS Text -->
         <section class="belowSection">
@@ -57,5 +61,6 @@
             </section>
         </section>
     </main>
+
 </body>
 </html>

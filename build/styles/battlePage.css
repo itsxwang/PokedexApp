@@ -7,26 +7,61 @@
     font-family: cursive;
 }
 
-body {
-    background: linear-gradient(to bottom right, #1d0f01 10%, #030303 27%, #1d0f02);
-    color: rgb(255, 255, 255);
-    text-align: center;
-    height: 100vh;  
+html {
+    font-size: 62.5%;
+    /* 62.5% of 16px(default browser font size) = 10px */
 }
 
+body {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    height: 100vh;
+}
+
+
+
+/* styles of main container */
+
+.battle-container {
+    background: linear-gradient(to bottom right, #1d0f01 10%, #030303 27%, #1d0f02);
+    /* border: 2px solid rgb(252, 252, 252); */
+    position: relative;
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    
+}
+
+/* styles of upper section */
+.upperSection {
+    border: 2px solid rgb(255, 86, 86);
+    width: 90%;
+    margin: 1.5rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* closeIcon */
+
+/* .closeIconContainer */
+
 .closeIconContainer {
+    width: 5.6rem;
     position: absolute;
-    top: 0rem;
-    right: 1rem;
-    width: 3.5rem;
-    height: 3.5rem;
+    top: 0.7rem;
+    right: 0.61rem;
+    height: 5.6rem;
     background: #0f0f0f;
     border: 2px solid #8f5f2f;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 6px rgba(143, 95, 47, 0.6);
+    box-shadow: 0 0 6px rgba(143, 95, 47, 0.6);  
     transition: all 0.2s ease;
     cursor: pointer;
 }
@@ -34,16 +69,49 @@ body {
 .closeIconContainer:hover {
     box-shadow: 0 0 10px rgba(143, 95, 47, 0.9);
     transform: scale(1.05);
-    
+
 }
 
+.closeIconContainer:active {
+    box-shadow: 0 0 10px rgba(143, 95, 47, 0.9);
+    transform: scale(0.8);
+}
+
+/* styles of close sign specifically */
 .closeIcon {
-    width: 1.6rem;
-    height: 1.6rem;
+    width: 2.56rem;
+    height: 2.56rem;
     filter: brightness(90%) contrast(120%);
     transition: transform 0.2s ease;
 }
 
-.closeIcon:hover {
-    
+/* battleArena start */
+.battleArena {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    align-items: center;
 }
+
+
+/* styles of both selectedPokemons */
+.upperPokemon
+
+
+/* battleStart button styles */
+.battleStartBtn {
+    width: 8.5%;
+    margin: 0 auto;
+    padding: 15;
+}
+
+
+/* belowSection */
+.belowSection {
+    border: 2px solid rgb(255, 86, 86);
+    width: 97%;
+    margin: 0 auto;
+
+}
+
+
+
