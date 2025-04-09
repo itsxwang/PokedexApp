@@ -13,7 +13,7 @@
 /**
  * Represents Pokemon stats structure
  */
-export interface PokemonStats {
+interface PokemonStats {
     hp: number;
     attack: number;
     defense: number;
@@ -25,7 +25,7 @@ export interface PokemonStats {
   /**
    * Represents a Pokemon entity with all its properties
    */
-export interface Pokemon {
+interface Pokemon {
     name: string;
     type: string;
     sprite: string;
@@ -35,7 +35,7 @@ export interface Pokemon {
   /**
    * Structure of raw Pokemon data from the PokeAPI
    */
-  export interface PokemonApiResponse {
+interface PokemonApiResponse {
     name: string;
     types: Array<{
       type: {
@@ -244,16 +244,23 @@ export interface Pokemon {
    * Handles Pokemon search functionality
    * Filters Pokemon by name and updates the display
    */
-  function searchClicked(): void {
+  function searchClicked(event?: Event|null,pageLoad: boolean = false ): void {
     // Get and normalize search input
+    if (pageLoad) {
+      searchInput.value = localStorage.getItem("pokemonSearch") || "";
+    }
     const searchValue: string = searchInput.value.toLowerCase();
-    searchInput.value = ""; // Clear the input
-  
+    localStorage.setItem("pokemonSearch", searchInput.value);
+    if (!searchValue) {
+      displayPokemon(null);
+      return;
+    }
+    
     // Filter Pokemon by name
     let searchResult: Pokemon[] = userPokemonStorage.filter((element: Pokemon) => {
       return element.name.includes(searchValue);
     });
-  
+    
     // Handle no results case
     if (searchResult.length === 0) {
       const noResultsMessage: string = "No Pokemon Found!";
@@ -275,7 +282,7 @@ export interface Pokemon {
   // Search on Enter key press
   searchInput.addEventListener("keyup", (e: KeyboardEvent) => {
     if (e.key === "Enter") {
-      searchClicked();
+      searchClicked(null);
     }
   });
   
@@ -290,6 +297,13 @@ export interface Pokemon {
     } else {
       // Display the most recent Pokemon
       displayPokemon(userPokemonStorage[0].sprite);
+    }
+
+    // Handle search on page load
+    const pokemonSearch: string | null = localStorage.getItem("pokemonSearch");
+    if (pokemonSearch) {
+      searchInput.value = pokemonSearch;
+      searchClicked(null, true);
     }
   });
   

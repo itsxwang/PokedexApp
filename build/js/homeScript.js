@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Pokemon Home Page Application
  *
@@ -191,10 +192,17 @@ function displayPokemon(image_1) {
  * Handles Pokemon search functionality
  * Filters Pokemon by name and updates the display
  */
-function searchClicked() {
+function searchClicked(event, pageLoad = false) {
     // Get and normalize search input
+    if (pageLoad) {
+        searchInput.value = localStorage.getItem("pokemonSearch") || "";
+    }
     const searchValue = searchInput.value.toLowerCase();
-    searchInput.value = ""; // Clear the input
+    localStorage.setItem("pokemonSearch", searchInput.value);
+    if (!searchValue) {
+        displayPokemon(null);
+        return;
+    }
     // Filter Pokemon by name
     let searchResult = userPokemonStorage.filter((element) => {
         return element.name.includes(searchValue);
@@ -216,7 +224,7 @@ searchIcon.addEventListener("click", searchClicked);
 // Search on Enter key press
 searchInput.addEventListener("keyup", (e) => {
     if (e.key === "Enter") {
-        searchClicked();
+        searchClicked(null);
     }
 });
 // Roll button click handler
@@ -231,5 +239,11 @@ window.addEventListener("load", () => {
         // Display the most recent Pokemon
         displayPokemon(userPokemonStorage[0].sprite);
     }
+    // Handle search on page load
+    const pokemonSearch = localStorage.getItem("pokemonSearch");
+    if (pokemonSearch) {
+        searchInput.value = pokemonSearch;
+        searchClicked(null, true);
+    }
 });
-
+// Export types for potential reuse in other components
